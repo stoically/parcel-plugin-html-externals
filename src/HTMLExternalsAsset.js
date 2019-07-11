@@ -4,7 +4,7 @@ const HTMLAsset = parseInt(process.versions.node, 10) < 8
   : require('parcel-bundler/src/assets/HTMLAsset');
 
 let externals;
-class ExternalsHTMLAsset extends HTMLAsset {
+class HTMLExternalsAsset extends HTMLAsset {
   async collectDependencies() {
     if (!externals) {
       const pkg = await this.getPackage();
@@ -58,4 +58,4 @@ class ExternalsHTMLAsset extends HTMLAsset {
   }
 }
 
-module.exports = ExternalsHTMLAsset;
+module.exports = HTMLExternalsAsset;
