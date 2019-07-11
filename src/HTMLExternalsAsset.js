@@ -32,9 +32,9 @@ function _walk(walk, externals) {
       (node.tag === 'link' && node.attrs.rel === 'stylesheet' && node.attrs.href)
     );
 
-    if (src && Object.keys(externals).find(external => {
-      return !externals[external] && minimatch(src, external);
-    })) {
+    if (src && Object.keys(externals).find(external =>
+      !externals[external] && minimatch(src, external)
+    )) {
       return node;
     }
     return htmlWalkFn(node);
