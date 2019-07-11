@@ -1,6 +1,6 @@
 {
   "name": "parcel-plugin-html-externals",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "ParcelJS plugin to ignore certain script and stylesheet link tags in html files marked as externals",
   "repository": {
     "type": "git",
