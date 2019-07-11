@@ -7,22 +7,18 @@ class HTMLExternalsAsset extends HTMLAsset {
   async collectDependencies() {
     const pkg = await this.getPackage();
     if (pkg && pkg.externals) {
-      _proxy.call(this, pkg.externals);
+      this.ast = new Proxy(this.ast, {
+        get(target, key) {
+          if (key === 'walk') {
+            return _walk.call(target, target[key], pkg.externals);
+          }
+          return target[key];
+        }
+      });
     }
 
     return HTMLAsset.prototype.collectDependencies.call(this);
   }
-}
-
-function _proxy(externals) {
-  this.ast = new Proxy(this.ast, {
-    get(target, key) {
-      if (key === 'walk') {
-        return _walk.call(target, target[key], externals);
-      }
-      return target[key];
-    }
-  });
 }
 
 function _walk(walk, externals) {
