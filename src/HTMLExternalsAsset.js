@@ -26,19 +26,18 @@ function _proxy(externals) {
 }
 
 function _walk(walk, externals) {
-  return fn => walk.call(this, node => {
+  return htmlWalkFn => walk.call(this, node => {
     const src = node.attrs && (
       (node.tag === 'script' && node.attrs.src) ||
       (node.tag === 'link' && node.attrs.rel === 'stylesheet' && node.attrs.href)
     );
 
-    if (!src || Object.keys(externals).find(external => {
-      return externals[external] || !minimatch(src, external);
+    if (src && Object.keys(externals).find(external => {
+      return !externals[external] && minimatch(src, external);
     })) {
-      return fn(node);
-    } else {
       return node;
     }
+    return htmlWalkFn(node);
   });
 }
 
