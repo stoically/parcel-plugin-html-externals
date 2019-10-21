@@ -1,6 +1,8 @@
 ParcelJS plugin to ignore certain script and stylesheet link tags in html files marked as externals.
 
 > Parcel will probably support externals out of the box in the future, [related issue here](https://github.com/parcel-bundler/parcel/issues/144).
+>
+> If you're looking for a way to declare externals instead of ignoring them, you might want to check out [parcel-plugin-externals](https://github.com/FlorianRappl/parcel-plugin-externals)
 
 ### Install
 
