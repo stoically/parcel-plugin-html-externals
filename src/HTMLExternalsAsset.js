@@ -29,7 +29,7 @@ function _walk(walk, externals) {
     );
 
     if (src && Object.keys(externals).find(external =>
-      !externals[external] && minimatch(src, external)
+      externals[external] === false && minimatch(src, external)
     )) {
       return node;
     }
