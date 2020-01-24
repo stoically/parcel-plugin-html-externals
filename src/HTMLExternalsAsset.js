@@ -1,7 +1,7 @@
 const minimatch = require('minimatch');
 const HTMLAsset = parseInt(process.versions.node, 10) < 8
-  ? require('parcel/lib/assets/HTMLAsset')
-  : require('parcel/src/assets/HTMLAsset');
+  ? require('parcel-bundler/lib/assets/HTMLAsset')
+  : require('parcel-bundler/src/assets/HTMLAsset');
 
 class HTMLExternalsAsset extends HTMLAsset {
   async collectDependencies() {
