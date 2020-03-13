@@ -25,7 +25,7 @@ function _walk(walk, externals) {
   return htmlWalkFn => walk.call(this, node => {
     const src = node.attrs && (
       (node.tag === 'script' && node.attrs.src) ||
-      (node.tag === 'link' && node.attrs.rel === 'stylesheet' && node.attrs.href)
+      (node.tag === 'link' && node.attrs.href)
     );
 
     if (src && Object.keys(externals).find(external =>
